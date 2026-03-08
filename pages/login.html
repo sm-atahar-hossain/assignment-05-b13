@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Github Issues Tracker</title>
+    <link
+      rel="shortcut icon"
+      href="../assets/github-logo.png"
+      type="image/x-icon"
+    />
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+      integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <!-- Daisy ui and tailwind -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@5"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Style Sheet -->
+    <link rel="stylesheet" href="../style/style.css" />
+  </head>
+  <body>
+    <!-- login section -->
+    <section class=" md:w-9/12 container mx-auto my-5 flex justify-center">
+      <fieldset
+        class="fieldset border-base-300 rounded-box md:w-6/12 border p-4 shadow-black shadow-lg"
+      >
+        <div class="flex justify-center flex-col items-center gap-2">
+          <img class="w-20" src="../assets/github-logo.png" alt="" srcset="" />
+          <h1 class="text-2xl font-bold">GitHub Issues Tracker</h1>
+          <p class="text-gray-500 text-sm">Sign in to manage your issues</p>
+        </div>
+        <label class="label">Username</label>
+        <input id="userInput" type="text" class="input w-full" placeholder="Username" />
+        <label class="label text-blue-500">Default: admin</label>
+        <label class="label">Password</label>
+        <input id="passwordInput" type="password" class="input w-full" placeholder="Password" />
+        <label class="label text-blue-500">Default: admin123</label>
+        <button id="loginBtn" type="submit" class="btn btn-neutral mt-4">Login</button>
+        <fieldset class="fieldset text-center">
+          <label class="font-semibold">OR</label>
+          <p class="text-gray-500">Demo Credentials:</p>
+          <div class="bg-blue-50 w-2/3 mx-auto p-4 font-semibold">
+            <p>
+              Username: admin <br />
+              Password: admin123
+            </p>
+          </div>
+        </fieldset>
+      </fieldset>
+    </section>
+
+    <script src="../js/login.js"></script>
+  </body>
+</html>
