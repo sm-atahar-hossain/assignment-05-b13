@@ -47,8 +47,10 @@ const displayIssues = (arr) => {
 
           <div class="flex justify-center gap-2">
              ${!obj.labels[0] || obj.labels[0] === "bug"
-            ? `<button class="btn text-pink-500 border-pink-500 text-[10px] rounded-4xl">
-             BUG </button>`
+            ? `<button class="btn text-pink-500 border-pink-500 text-[10px] rounded-4xl flex gap-1">
+               <i class="fa-solid fa-bug"></i>
+               <span>BUG</span> 
+               </button>`
             : `<button class="btn text-green-500 border-green-500 text-[10px] rounded-4xl">
             ${obj.labels[0].toUpperCase()}</button>`}
 
