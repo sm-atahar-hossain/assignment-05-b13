@@ -36,7 +36,7 @@ const loadIssuesDetails =(id)=>{
 const displayIssuesDetails = (obj) => {
   const detailsDiv = document.querySelector('#detailsDiv');
   detailsDiv.innerHTML = `
-  <div class="w-full bg-white rounded-md flex flex-col items-start space-y-4 p-5">
+  <div class="w-full bg-white rounded-md flex flex-col items-start space-y-2 p-3">
 
     <!-- Title -->
     <div class="text-lg font-bold">${obj.title}</div>
@@ -69,7 +69,7 @@ const displayIssuesDetails = (obj) => {
     </div>
 
     <!-- Assignee & Priority -->
-    <div class="bg-gray-50 flex w-full justify-between p-5 rounded-lg text-sm">
+    <div class="bg-gray-100 flex w-full justify-between p-3 rounded-lg text-sm">
       <div class="w-1/2">
         <p class="text-gray-500">Assignee:</p>
         <p class="font-bold">${obj.assignee || "N/A"}</p>
