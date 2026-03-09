@@ -1,12 +1,12 @@
 let allIssues = [];
 
-const controlSpinner= (status)=>{
+const controlSpinner = (status) => {
   const spinner = document.querySelector('#spinner');
-  if(status == true){
+  if (status == true) {
     spinner.classList.remove("hidden");
     document.querySelector('#displayIssues').classList.add('hidden');
   }
-  else{
+  else {
     document.querySelector('#displayIssues').classList.remove("hidden");
     spinner.classList.add('hidden');
   }
@@ -22,11 +22,11 @@ const loadAllIssues = () => {
     });
 };
 
-const activeBtn= ()=>{
+const activeBtn = () => {
   const activeBtns = document.querySelectorAll(".activeBtn");
-  activeBtns.forEach(btn=>{
-    btn.addEventListener("click",()=>{
-      activeBtns.forEach(b=> b.classList.remove("btn-primary"));
+  activeBtns.forEach(btn => {
+    btn.addEventListener("click", () => {
+      activeBtns.forEach(b => b.classList.remove("btn-primary"));
       btn.classList.add('btn-primary');
     });
   });
@@ -43,20 +43,20 @@ const displayIssues = (arr) => {
     const card = document.createElement('div');
     card.innerHTML = `
         <div class="w-[320px] h-[420px] bg-white flex flex-col gap-4 p-10 rounded-lg ${obj.status === "open"
-              ? "shadow-green-600"
-              :"shadow-purple-500"}  shadow-inner">
+        ? "shadow-green-600"
+        : "shadow-purple-500"}  shadow-inner">
         
          <div class="flex justify-between">
             <img class="w-6 h-6"
              src="${obj.status === "open"
-              ? "../assets/Open-Status.png"
-              : "../assets/Closed- Status .png"}" />
+        ? "../assets/Open-Status.png"
+        : "../assets/Closed- Status .png"}" />
             <button class=" btn rounded-4xl bg-white
               ${obj.priority === "high"
-              ? "!bg-pink-50 text-pink-500 border border-pink-500"
-              : obj.priority === "medium"
-              ? " !bg-yellow-50 text-yellow-500 border-yellow-500"
-              : "!bg-gray-50 text-gray-500 border-gray-500"}">
+        ? "!bg-pink-50 text-pink-500 border border-pink-500"
+        : obj.priority === "medium"
+          ? " !bg-yellow-50 text-yellow-500 border-yellow-500"
+          : "!bg-gray-50 text-gray-500 border-gray-500"}">
               ${obj.priority.toUpperCase()}
             </button>
            </div>
@@ -71,15 +71,15 @@ const displayIssues = (arr) => {
 
           <div class="flex justify-center gap-2">
              ${!obj.labels[0] || obj.labels[0] === "bug"
-            ? `<button class="btn bg-pink-50 text-pink-500 border-pink-500 text-[10px] rounded-4xl flex gap-1">
+        ? `<button class="btn bg-pink-50 text-pink-500 border-pink-500 text-[10px] rounded-4xl flex gap-1">
                <i class="fa-solid fa-bug"></i>
                <span>BUG</span> 
                </button>`
-            : `<button class="btn bg-green-50 text-green-500 border-green-500 text-[10px] rounded-4xl">
+        : `<button class="btn bg-green-50 text-green-500 border-green-500 text-[10px] rounded-4xl">
             ${obj.labels[0].toUpperCase()}</button>`}
 
             ${!obj.labels[0] || obj.labels[0] === "bug"
-            ? `<button class="btn bg-yellow-50 text-yellow-500 border-yellow-500 text-[10px] rounded-4xl">
+        ? `<button class="btn bg-yellow-50 text-yellow-500 border-yellow-500 text-[10px] rounded-4xl">
             HELP WANTED</button>`: ""}
           </div>
 
@@ -106,3 +106,14 @@ const filterIssues = (status) => {
 }
 
 loadAllIssues();
+
+const searchIt = () => {
+  const searchInput = document.querySelector('#searchInput');
+  let value = searchInput.value.trim();
+  fetch(` https://phi-lab-server.vercel.app/api/v1/lab/issues/search?q=${value}`)
+    .then(res => res.json())
+    .then(json => {
+      displayIssues(json.data);
+    });
+}
+
