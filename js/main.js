@@ -9,6 +9,16 @@ const loadAllIssues = () => {
     });
 };
 
+const activeBtn= ()=>{
+  const activeBtns = document.querySelectorAll(".activeBtn");
+  activeBtns.forEach(btn=>{
+    btn.addEventListener("click",()=>{
+      activeBtns.forEach(b=> b.classList.remove("btn-primary"));
+      btn.classList.add('btn-primary');
+    });
+  });
+}
+
 const displayIssues = (arr) => {
   let count = 0;
   const issuesDiv = document.querySelector('#issuesDiv');
@@ -29,10 +39,10 @@ const displayIssues = (arr) => {
               : "../assets/Closed- Status .png"}" />
             <button class=" btn rounded-4xl bg-white
               ${obj.priority === "high"
-              ? "text-pink-500 border-pink-500"
+              ? "!bg-pink-50 text-pink-500 border border-pink-500"
               : obj.priority === "medium"
-              ? "text-yellow-500 border-yellow-500"
-              : "text-gray-500 border-gray-500"}">
+              ? " !bg-yellow-50 text-yellow-500 border-yellow-500"
+              : "!bg-gray-50 text-gray-500 border-gray-500"}">
               ${obj.priority.toUpperCase()}
             </button>
            </div>
@@ -47,15 +57,15 @@ const displayIssues = (arr) => {
 
           <div class="flex justify-center gap-2">
              ${!obj.labels[0] || obj.labels[0] === "bug"
-            ? `<button class="btn text-pink-500 border-pink-500 text-[10px] rounded-4xl flex gap-1">
+            ? `<button class="btn bg-pink-50 text-pink-500 border-pink-500 text-[10px] rounded-4xl flex gap-1">
                <i class="fa-solid fa-bug"></i>
                <span>BUG</span> 
                </button>`
-            : `<button class="btn text-green-500 border-green-500 text-[10px] rounded-4xl">
+            : `<button class="btn bg-green-50 text-green-500 border-green-500 text-[10px] rounded-4xl">
             ${obj.labels[0].toUpperCase()}</button>`}
 
             ${!obj.labels[0] || obj.labels[0] === "bug"
-            ? `<button class="btn text-yellow-500 border-yellow-500 text-[10px] rounded-4xl">
+            ? `<button class="btn bg-yellow-50 text-yellow-500 border-yellow-500 text-[10px] rounded-4xl">
             HELP WANTED</button>`: ""}
           </div>
 
@@ -70,12 +80,14 @@ const displayIssues = (arr) => {
     count++;
   }
   issueCount.innerText = count;
+  activeBtn();
 
 }
 
 const filterIssues = (status) => {
   let newArr = allIssues.filter(issue => issue.status === status);
   displayIssues(newArr);
+  activeBtn();
 }
 
 loadAllIssues();
