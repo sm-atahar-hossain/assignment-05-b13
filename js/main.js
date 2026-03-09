@@ -1,6 +1,19 @@
 let allIssues = [];
 
+const controlSpinner= (status)=>{
+  const spinner = document.querySelector('#spinner');
+  if(status == true){
+    spinner.classList.remove("hidden");
+    document.querySelector('#displayIssues').classList.add('hidden');
+  }
+  else{
+    document.querySelector('#displayIssues').classList.remove("hidden");
+    spinner.classList.add('hidden');
+  }
+}
+
 const loadAllIssues = () => {
+  controlSpinner(true);
   fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then(res => res.json())
     .then(json => {
@@ -21,6 +34,7 @@ const activeBtn= ()=>{
 
 const displayIssues = (arr) => {
   let count = 0;
+  controlSpinner(true);
   const issuesDiv = document.querySelector('#issuesDiv');
   const issueCount = document.querySelector('#issuesCount');
   issuesDiv.innerHTML = '';
@@ -81,6 +95,7 @@ const displayIssues = (arr) => {
   }
   issueCount.innerText = count;
   activeBtn();
+  controlSpinner(false);
 
 }
 
