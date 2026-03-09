@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+  <!-- HEAD -->
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -34,6 +35,7 @@
     <!-- Style Sheet -->
     <link rel="stylesheet" href="../style/style.css" />
   </head>
+  <!-- BODY -->
   <body class="min-h-screen">
     <header>
       <!-- Navbar -->
@@ -53,9 +55,19 @@
           <div class="flex justify-center gap-2">
             <label class="input w-1/3 md:w-2/3 flex-1 text-[12px] md:text-lg">
               <i class="fa-solid fa-magnifying-glass"></i>
-              <input id="searchInput" type="search" required placeholder="Search" />
+              <input
+                id="searchInput"
+                type="search"
+                required
+                placeholder="Search"
+              />
             </label>
-            <button onclick="searchIt()" class="btn btn-primary w-fit text-[12px] md:text-lg m-0">Search </button>
+            <button
+              onclick="searchIt()"
+              class="btn btn-primary w-fit text-[12px] md:text-lg m-0"
+            >
+              Search
+            </button>
           </div>
         </div>
       </nav>
@@ -64,58 +76,102 @@
     <section
       class="container mx-auto mt-8 bg-white rounded-md flex py-4 px-8 gap-5"
     >
-      <button onclick="displayIssues(allIssues)" class=" activeBtn btn border-blue-600 btn-primary ">All</button>
-      <button onclick="filterIssues('open')" class="btn  activeBtn border-blue-600 ">open</button>
-      <button onclick="filterIssues('closed')" class=" activeBtn btn border-blue-600 ">close</button>
+      <button
+        onclick="displayIssues(allIssues)"
+        class="activeBtn btn border-blue-600 btn-primary"
+      >
+        All
+      </button>
+      <button
+        onclick="filterIssues('open')"
+        class="btn activeBtn border-blue-600"
+      >
+        open
+      </button>
+      <button
+        onclick="filterIssues('closed')"
+        class="activeBtn btn border-blue-600"
+      >
+        close
+      </button>
     </section>
     <!-- Issues count section -->
     <section
       class="container mx-auto mt-8 bg-white rounded-md flex py-4 px-8 gap-5"
     >
-      <div class="flex  items-center justify-center gap-3 w-full ">
+      <div class="flex items-center justify-center gap-3 w-full">
         <div class="flex-1 flex items-center gap-2">
-          <div class="p-2 rounded-full bg-purple-100"><img class="w-8 h-8 " src="../assets/Aperture.png" alt="" srcset="" /></div>
+          <div class="p-2 rounded-full bg-purple-100">
+            <img
+              class="w-8 h-8"
+              src="../assets/Aperture.png"
+              alt=""
+              srcset=""
+            />
+          </div>
           <div class="flex flex-col items-start">
-            <h2 class="font-semibold text-lg"><span id="issuesCount">0</span> Issues</h2>
-            <p class="text-gray-400 text-sm ">Track and manage your project issues</p>
+            <h2 class="font-semibold text-lg">
+              <span id="issuesCount">0</span> Issues
+            </h2>
+            <p class="text-gray-400 text-sm">
+              Track and manage your project issues
+            </p>
           </div>
         </div>
-        <div class="flex  gap-2 justify-end">
-          <div class="flex  gap-2 items-center"><img class="w-6 h-6" src="../assets/Open-Status.png" alt="" srcset="">Open</div>
-          <div class="flex  gap-2 items-center"><img class="w-6 h-6" src="../assets/Closed- Status .png" alt="" srcset="">Closed</div>
+        <div class="flex gap-2 justify-end">
+          <div class="flex gap-2 items-center">
+            <img
+              class="w-6 h-6"
+              src="../assets/Open-Status.png"
+              alt=""
+              srcset=""
+            />Open
+          </div>
+          <div class="flex gap-2 items-center">
+            <img
+              class="w-6 h-6"
+              src="../assets/Closed- Status .png"
+              alt=""
+              srcset=""
+            />Closed
+          </div>
         </div>
       </div>
     </section>
     <!-- spinner section -->
-    <section  class="container mx-auto flex justify-center my-5 ">
+    <section class="container mx-auto flex justify-center my-5">
       <span id="spinner" class="loading loading-bars loading-xl hidden"></span>
     </section>
     <!-- Display Issues section -->
-     <section id="displayIssues" class="container mx-auto mt-1 rounded-md flex py-4 gap-6">
-
-      <div  id="issuesDiv" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-around mx-auto gap-2">
-        <div class="w-fit bg-white flex flex-col p-10 rounded-lg shadow-black shadow-inner ">
-          <div class="flex justify-between">
-            <img class="w-6 h-6" src="../assets/Open-Status.png" alt="" srcset="">
-            <button class="btn text-orange-400 bg-[#fdfdfd] rounded-4xl border-orange-400">High</button>
+    <section
+      id="displayIssues"
+      class="container mx-auto mt-1 rounded-md flex py-4 gap-6"
+    >
+      <div
+        id="issuesDiv"
+        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 justify-around mx-auto gap-2"
+      >
+        <!-- display issues -->
+      </div>
+    </section>
+    <!-- Modal section -->
+    <section>
+      <!-- Open the modal using ID.showModal() method -->
+      <dialog id="my_modal" class="modal modal-bottom sm:modal-middle">
+        <div class="modal-box">
+          <div id="detailsDiv" >
+            <!-- Modal design -->
           </div>
-          <div class="text-lg md:text-xl font-semibold">Fix navigation menu on mobile devices</div>
-          <div class="text-gray-400 text-sm">The navigation menu doesn't collapse properly on mobile devices...</div>
-          <div class="flex justify-center gap-2">
-            <button class="btn text-orange-400 bg-[#fdfdfd] rounded-4xl border-orange-400"><i class="fa-solid fa-bug"></i>BUG</button>
-            <button class="btn text-purple-500  rounded-4xl border-purple-600"><img class="w-6 h-6" src="../assets/Aperture.png" alt="" srcset="">help wanted</button>
-          </div>
-          <div class="mt-5 flex flex-col justify-center items-start">
-            <p>#1by john_doe</p>
-            <p>1/15/2024</p>
+          <div class="modal-action">
+            <form method="dialog">
+              <!-- if there is a button in form, it will close the modal -->
+              <button class="btn">Close</button>
+            </form>
           </div>
         </div>
-
-      </div>
-
-     </section>
-
-     <!-- JS file -->
-     <script src="../js/main.js"></script>
+      </dialog>
+    </section>
+    <!-- JS file -->
+    <script src="../js/main.js"></script>
   </body>
 </html>
